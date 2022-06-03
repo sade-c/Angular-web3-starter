@@ -45,7 +45,7 @@ export const environment = {
 }
 ````
 
-angweb3-config.interface.ts
+## angweb3-config.interface.ts
 
  ````
  export interface Angweb3Config {
@@ -59,4 +59,34 @@ angweb3-config.interface.ts
     },
     networkParams: NetworkParams
 }
+````
+
+## default-provider.service
+
+````
+export class DefaultProviderService {
+
+    provider: ethers.providers.JsonRpcProvider
+
+    constructor() {
+        this.provider = new ethers.providers.JsonRpcProvider(environment.jsonRpcUrl);
+    }
+
+    async getBlockNumber() {
+        const blockNumber = await this.provider.getBlockNumber();
+        console.log('block number is: ', blockNumber);
+    }
+    async getNetwork() {
+        const getNetwork = await this.provider.getNetwork;
+        console.log(' Network is: ', getNetwork);
+    }
+    async getGasPrice() {
+        const GasPrice = await this.provider.getGasPrice;
+        console.log(' GasPrice is: ', GasPrice);
+    }
+    async getBalance(address: string) {
+        const balance = await this.provider.getBalance(address);
+        console.log(' balance is: ', balance);
+    }
+
 ````
