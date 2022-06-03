@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  environmentName: 'Avalanche Testnet C-Chain',
-  jsonRpcUrl: 'https://api.avax-test.network/ext/bc/C/rpc',
+  environmentName: 'Polygon Mumbai Testnet',
+  jsonRpcUrl: 'https://polygon-mumbai.g.alchemy.com/v2/-***',
   config: {
     contracts: {
       USDC: '',
@@ -15,20 +15,20 @@ export const environment = {
       Greeter: "0x2b7Ca997504485BFA6dDED203A25F8aAFc9496A8",
     },
     networkParams: {
-      chainId: '0xA869',
-      chainName: 'Avalanche Testnet C-Chain',
+      chainId: '0x13881',
+      chainName: 'Polygon Mumbai Testnet',
       nativeCurrency: {
-        name: 'Avalanche',
-        symbol: 'AVAX',
+        name: 'Matic',
+        symbol: 'MATIC',
         decimals: 18
       },
-      rpcUrls: ['https://api.avax-test.network/ext/bc/C/rpc'],
-      blockExplorerUrls: ['https://testnet.snowtrace.io/']
+      rpcUrls: ['https://rpc-mumbai.maticvigil.com/'],
+      blockExplorerUrls: ['https://mumbai.polygonscan.com/']
     },
     ui: {
-      chainName: 'Avalanche',
-      logo: '/assets/logos/avalanche-avax-logo.png',
-      txUrlPrefix: 'https://testnet.snowtrace.io/tx/'
+      chainName: 'Polygon',
+      logo: '/assets/logos/matic-token-icon.png',
+      txUrlPrefix: 'https://mumbai.polygonscan.com/tx/'
     }
   },
 }
