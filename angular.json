@@ -62,6 +62,69 @@
               ],
               "outputHashing": "all"
             },
+            "polygon": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "3mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.polygon.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "avalanche": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "3mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.avalanche.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "hardhat": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "3mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.hardhat.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
             "development": {
               "buildOptimizer": false,
               "optimization": false,
@@ -78,6 +141,15 @@
           "configurations": {
             "production": {
               "browserTarget": "Angweb3:build:production"
+            },
+            "polygon": {
+              "browserTarget": "Angweb3:build:polygon"
+            },
+            "avalanche": {
+              "browserTarget": "Angweb3:build:avalanche"
+            },
+            "hardhat": {
+              "browserTarget": "Angweb3:build:hardhat"
             },
             "development": {
               "browserTarget": "Angweb3:build:development"

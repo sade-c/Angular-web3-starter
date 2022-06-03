@@ -6,6 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
+    "build.polygon": "ng build --configuration polygon",
+    "build.avalanche": "ng build --configuration avalanche",
+    "build.hardhat": "ng build --configuration hardhat",
     "test": "ng test",
     "lint": "ng lint"
   },
