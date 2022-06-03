@@ -1,5 +1,6 @@
 # Angular-web3-starter
 
+![angular web3](./src/assets/angweb3.png?raw=true "angular web3")
 Basic operations for those who want to develop web3 on Angular.
 
 ## Template
