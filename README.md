@@ -9,6 +9,7 @@ www.primefaces.org/sakai-ng
 
 ## Usage
 
+![Alt text](./src/assets/greater.png?raw=true "Title")
 environment.ts
 
 ````
