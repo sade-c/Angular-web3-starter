@@ -10,6 +10,8 @@ www.primefaces.org/sakai-ng
 ## Usage
 
 ![Alt text](./src/assets/greater.png?raw=true "Title")
+
+![switchNetwork](./src/assets/switchNetwork.png?raw=true "switchNetwork")
 environment.ts
 
 ````
