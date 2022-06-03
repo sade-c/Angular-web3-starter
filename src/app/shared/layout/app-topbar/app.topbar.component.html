@@ -1,0 +1,31 @@
+<div class="layout-topbar">
+  <a class="layout-topbar-logo" routerLink="">
+    <img src="assets/layout/images/{{ appMain.config.dark ? 'logo-white' : 'logo-dark' }}.svg" alt="logo" />
+    <span>Angweb3</span>
+  </a>
+
+  <a class="p-link layout-menu-button layout-topbar-button" href="#" (click)="appMain.toggleMenu($event)">
+    <i class="pi pi-bars"></i>
+  </a>
+
+  <a class="p-link layout-topbar-menu-button layout-topbar-button" href="#" (click)="appMain.toggleTopMenu($event)">
+    <i class="pi pi-ellipsis-v"></i>
+  </a>
+  <button pButton class="  " type="button" (click)="switchNetwork()"
+    [disabled]="isCorrectNetwork">switchNetwork</button>
+
+  <div class="layout-topbar-menu" [ngClass]="{ 'layout-topbar-menu-mobile-active': appMain.topMenuActive }">
+
+    <!--     <p-dropdown [options]="network" [(ngModel)]="selectedNetwork"></p-dropdown> -->
+
+    <p-avatar class="p-link layout-topbar-button" [image]="imageDataUrl"></p-avatar>
+    <p-chip class="p-link layout-topbar-address" [label]="currentAccount | shortAddress :[7, '...', 4 ]"
+      [image]="imageDataUrl"></p-chip>
+
+
+    <button pButton class="  " type="button" (click)="onConnectTapped()">{{connect}}</button>
+    <!--     <p-toggleButton onLabel="confirm" offLabel="reject" (onChange)="onConnectTapped()" [(ngModel)]="isConected">
+    </p-toggleButton> -->
+
+  </div>
+</div>

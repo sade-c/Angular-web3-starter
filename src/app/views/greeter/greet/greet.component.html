@@ -1,0 +1,19 @@
+<button pButton pRipple type="button" (click)="greetMe()" label="Get Greet"
+    class="p-button-secondary mr-2 mb-2"></button>
+<form [formGroup]="gform" class="normal-text-color">
+    <div class="col-12 md:col-4">
+        <div class="p-inputgroup">
+            <span class="p-inputgroup-addon">Say Sameting</span>
+            <input type="text" pInputText placeholder="Price" formControlName="saysame">
+
+        </div>
+    </div>
+    <div class="col-12 md:col-4">
+        <div class="p-inputgroup">
+
+            <button pButton pRipple type="button" (click)="onApproveClicked()" label="Write"
+                class="p-button-secondary mr-2 mb-2"></button>
+
+        </div>
+    </div>
+</form>

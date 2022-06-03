@@ -1,0 +1,9 @@
+ng g m Dashboard --routing=true && ng g c Dashboard --skip-tests=true -m=Dashboard
+
+ng g m Login --routing=true && ng g c Login --skip-tests=true -m=Login
+
+ng g m Error --routing=true && ng g c Error --skip-tests=true -m=Error
+
+ng g m Notfound --routing=true && ng g c Notfound --skip-tests=true -m=Notfound
+
+ng g m Access --routing=true && ng g c Notfound --skip-tests=true -m=Access
