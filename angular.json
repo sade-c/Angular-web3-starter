@@ -37,7 +37,8 @@
               "src/assets/js/blockies.min.js"
             ],
             "allowedCommonJsDependencies": [
-              "chart.js"
+              "chart.js",
+              "hash.js"
             ]
           },
           "configurations": {

@@ -21,4 +21,40 @@ export class DashboardComponent implements OnInit {
     this.GlobalAlertService.connect();
     console.log('dene');
   }
+
+  code1: string = `export class GreeterService {
+
+    greeterContract: any
+
+    constructor(public provider: DefaultProviderService, private wallet: WalletProviderService, private http: HttpClient) {
+        this.greeterContract = new ethers.Contract(
+            wallet.currentConfig.contracts.Greeter,
+            Greeter.abi,
+            provider.provider
+        );
+    }
+
+
+
+    async greet() {
+        let greet = await this.greeterContract.greet();
+        return greet;
+    }
+    async setGreeting(greeting: string) {
+        let greet = this.greeterContract.connect(this.wallet.signer).setGreeting(greeting)
+            .then(() =&gt; { })
+            .catch((err) =&gt; {
+                if (err.code == 4001) {
+
+                    console.error(&quot;error&quot;, ProviderErrors[err.code].title);
+                }
+            });
+
+
+        return greet;
+    }
+}`;
+
+  code2: string = ``;
+
 }
