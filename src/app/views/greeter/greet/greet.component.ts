@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { GreeterService } from 'src/app/contracts/greeter.service';
 import { WalletProviderService } from 'src/app/shared/providers/wallet-provider.service';
 
@@ -9,8 +9,8 @@ import { WalletProviderService } from 'src/app/shared/providers/wallet-provider.
   styleUrls: ['./greet.component.scss']
 })
 export class GreetComponent {
-  gform = new FormGroup({
-    saysame: new FormControl(''),
+  gform = new UntypedFormGroup({
+    saysame: new UntypedFormControl(''),
 
   });
   greet: string;
