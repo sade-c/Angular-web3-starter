@@ -10,6 +10,15 @@ www.primefaces.org/sakai-ng
 
 ## Usage
 
+ four enviroment
+
+ ````
+    "watch": "ng build --watch --configuration development",
+    "build.polygon": "ng build --configuration polygon",
+    "build.avalanche": "ng build --configuration avalanche",
+    "build.hardhat": "ng build --configuration hardhat",`
+````
+
 ![Alt text](./src/assets/greater.png?raw=true "Title")
 
 ![switchNetwork](./src/assets/switchNetwork.png?raw=true "switchNetwork")
