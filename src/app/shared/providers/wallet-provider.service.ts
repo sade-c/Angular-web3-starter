@@ -5,14 +5,14 @@ import { BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { NetworkParams } from './network-params.interface';
 import { Angweb3Config } from './angweb3-config.interface';
-import { StringifyOptions } from 'querystring';
-
+import { Web3Provider } from '@ethersproject/providers';
+import { Contract } from "@ethersproject/contracts";
 @Injectable({
     providedIn: 'root'
 })
 export class WalletProviderService {
 
-    provider: any
+    provider: Web3Provider;
     ethereum
     signer: Signer
 
@@ -83,7 +83,7 @@ export class WalletProviderService {
         this.provider
             .send(
                 'wallet_watchAsset',
-                {
+                [{
                     type: 'ERC20',
                     options: {
                         address,
@@ -91,7 +91,7 @@ export class WalletProviderService {
                         decimals,
                         image
                     },
-                })
+                }])
             .then((success) => {
                 if (success) {
                     console.log('successfully added to wallet!');
@@ -156,7 +156,7 @@ export class WalletProviderService {
     }
 
     async enableEthereum(): Promise<any> {
-        return await this.provider.enable()
+        return await this.provider.on;
     }
 
     private async registerHandlers() {
@@ -210,7 +210,13 @@ export class WalletProviderService {
         this.currentNetwork = cNetwork
         this.currentConfig = environment.config
     }
-
+    async getContract(_abi: any, _address: string): Promise<Contract | null> {
+        if ((await this.provider.getCode(_address)) === '0x') {
+            console.error(`Address ${_address} is not a contract at the connected chain`);
+            return null;
+        }
+        return new Contract(_address, _abi, this.provider);
+    }
     private getHexString(networkCode) {
         return `0x${(+networkCode).toString(16)}`
     }
