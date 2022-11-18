@@ -1,18 +1,21 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { BigNumber, ethers, providers, Signer, } from 'ethers'
 import detectEthereumProvider from '@metamask/detect-provider';
 import { BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { NetworkParams } from './network-params.interface';
 import { Angweb3Config } from './angweb3-config.interface';
-import { Web3Provider } from '@ethersproject/providers';
-import { Contract } from "@ethersproject/contracts";
+import { AbiItem } from 'web3-utils';
+import { Contract } from 'web3-eth-contract';
+
+import Web3 from 'web3';
+import { WEB3 } from './web3';
 @Injectable({
     providedIn: 'root'
 })
 export class WalletProviderService {
 
-    provider: Web3Provider;
+    provider: any;
     ethereum
     signer: Signer
 
@@ -24,7 +27,7 @@ export class WalletProviderService {
     accountSubject: BehaviorSubject<any> = new BehaviorSubject(null)
     networkSubject: BehaviorSubject<any> = new BehaviorSubject(null)
 
-    constructor() {
+    constructor(@Inject(WEB3) private _web3: Web3) {
         this.initializeNetworkConnection()
     }
     async connect(): Promise<boolean> {
@@ -52,8 +55,10 @@ export class WalletProviderService {
         this.signer = await this.provider.getSigner()
         this.registerHandlers()
         if (ethereum.selectedAddress) {
-            ethereum.enable()
+            ethereum.enable();
+            this._web3.setProvider(this.provider);// todo togather web3 to eth?
             this.setCurrentAccount(ethereum.selectedAddress)
+
         } else {
         }
         // if (provider !== window.ethereum) {
@@ -210,12 +215,25 @@ export class WalletProviderService {
         this.currentNetwork = cNetwork
         this.currentConfig = environment.config
     }
-    async getContract(_abi: any, _address: string): Promise<Contract | null> {
+    /*     async getContract1(_abi: any, _address: string): Promise<Contract | null> {
+            if ((await this.provider.getCode(_address)) === '0x') {
+                console.error(`Address ${_address} is not a contract at the connected chain`);
+                return null;
+            }
+            return new Contract(_address, _abi, this.provider);
+        } */
+    /**
+ * Return the contrat based on ABIs and address informed
+ *
+ * @param _abis Abis of contract
+ * @param _address Address of contract
+ */
+    async getContract(_abis: AbiItem[], _address: string): Promise<Contract | null> {
         if ((await this.provider.getCode(_address)) === '0x') {
             console.error(`Address ${_address} is not a contract at the connected chain`);
             return null;
         }
-        return new Contract(_address, _abi, this.provider);
+        return new this._web3.eth.Contract(_abis, _address);
     }
     private getHexString(networkCode) {
         return `0x${(+networkCode).toString(16)}`
