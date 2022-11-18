@@ -10,6 +10,8 @@ import { ProviderErrors } from '../shared/model/eip1193/providerErrors';
 import { BaseContract } from './base-contract.service';
 import { GlobalAlertService } from '../shared/global-alert.service';
 import { AbiItem } from 'web3-utils';
+import { CallbackFunction, TransactionResult } from '../shared/model';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -51,5 +53,15 @@ export class GreeterService extends BaseContract {
 
 
         return greet;
+    }
+    finalSetGreetings(greeting: string, _callback?: CallbackFunction): Observable<TransactionResult<string>> {
+        return this.send(
+            Greeter.abi as AbiItem[],
+            'setGreeting',
+            `Transaction to send  ${greeting} was sent successfully`,
+            _callback,
+            `Transaction to finalize tchanged ${greeting} was confirmed`,
+            greeting
+        );
     }
 }
