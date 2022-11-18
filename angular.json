@@ -38,7 +38,14 @@
             ],
             "allowedCommonJsDependencies": [
               "chart.js",
-              "hash.js"
+              "hash.js",
+              "web3",
+              "scrypt-js",
+              "bn.js",
+              "@metamask/detect-provider",
+              "aes-js",
+              "js-sha3",
+              "bech32"
             ]
           },
           "configurations": {
