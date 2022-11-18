@@ -34,7 +34,7 @@ export class GreeterService extends BaseContract {
 
     async greet(): Promise<string> {
         let greet = await (await this.getString(Greeter.abi as AbiItem[], 'greet'))
-        //let greet = await (await this.getContract(Greeter.abi as AbiItem[]))methods["greet"].call(this);
+
         //let greet = await this.greeterContract.greet();
         console.log(greet);
         return greet;
