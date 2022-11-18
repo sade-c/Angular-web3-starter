@@ -56,7 +56,7 @@ export class WalletProviderService {
         this.registerHandlers()
         if (ethereum.selectedAddress) {
             ethereum.enable();
-            this._web3.setProvider(this.provider);// todo togather web3 to eth?
+
             this.setCurrentAccount(ethereum.selectedAddress)
 
         } else {
