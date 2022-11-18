@@ -201,7 +201,7 @@ export class WalletProviderService {
     }
 
     private initializeNetworkConnection() {
-        let eth: any = window.ethereum
+        let eth: any = this.ethereum
         if (eth) {
             let hexVersion = this.getHexString(eth.networkVersion)
             console.log('current network version is: ', hexVersion)
