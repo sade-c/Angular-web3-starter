@@ -25,35 +25,17 @@ export class GreeterService extends BaseContract {
 
     constructor(public provider: DefaultProviderService, private wallet: WalletProviderService, private http: HttpClient, _messageService: GlobalAlertService) {
         super(_messageService, wallet, wallet.currentConfig.contracts.Greeter);
-        this.greeterContract = new ethers.Contract(
-            wallet.currentConfig.contracts.Greeter,
-            Greeter.abi,
-            provider.provider
-        );
+
     }
 
 
 
     async greet(): Promise<string> {
         let greet = await (await this.getString(Greeter.abi as AbiItem[], 'greet'))
-
-        //let greet = await this.greeterContract.greet();
         console.log(greet);
         return greet;
     }
-    async setGreeting(greeting: string) {
-        let greet = this.greeterContract.connect(this.wallet.signer).setGreeting(greeting)
-            .then(() => { })
-            .catch((err) => {
-                if (err.code == 4001) {
 
-                    console.error("error", ProviderErrors[err.code].title);
-                }
-            });
-
-
-        return greet;
-    }
     finalSetGreetings(greeting: string, _callback?: CallbackFunction): Observable<TransactionResult<string>> {
         return this.send(
             Greeter.abi as AbiItem[],

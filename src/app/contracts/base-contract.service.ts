@@ -6,6 +6,7 @@ import { WalletProviderService } from "../shared/providers/wallet-provider.servi
 import { Contract } from 'web3-eth-contract';
 import BN from "bn.js";
 import { CallbackFunction, EventMonitoringParameters, EventPastParameters, ProviderErrors, TransactionResult, Web3Event, Web3Subscription } from "../shared/model";
+import Web3 from "web3";
 
 export abstract class BaseContract {
     protected contract!: Contract;
@@ -123,7 +124,17 @@ export abstract class BaseContract {
         const _contract = await this.getContract(this.getContractABI());
         return _contract.events[_monitorParameter.eventName](_monitorParameter);
     }
+    /**
+     * Gets a instance of Web3Event Subscription of an event  
+    
+ 
+     * @returns Web3Event[] Subscription
+     */
+    async allWeb3Events(): Promise<Web3Event[]> {
+        const _contract = await this.getContract(this.getContractABI())
+        return _contract.getPastEvents("allEvents");
 
+    }
     /**
      * Gets a instance of WEB3.JS Subscription of past events with the parameters requested
      * @param _monitorParameter  Object with the parameteres of event monitoring including Name of the event;
@@ -131,6 +142,7 @@ export abstract class BaseContract {
      *
      * @returns WEB3.JS Subscription
      */
+
     async getWeb3PastEventSubscription(_monitorParameter: EventPastParameters): Promise<Web3Event[]> {
         const _contract = await this.getContract(this.getContractABI());
         return _contract.getPastEvents(_monitorParameter.eventName, _monitorParameter);
