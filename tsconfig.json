@@ -3,7 +3,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
-    "outDir": "./docs",
+    "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "strictPropertyInitialization": false,
@@ -23,13 +23,12 @@
     "strictNullChecks": false,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "ES2022",
+    "target": "es2020",
     "module": "es2020",
     "lib": [
       "es2020",
       "dom"
-    ],
-    "useDefineForClassFields": false
+    ]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
@@ -47,14 +46,14 @@
     "assert": [
       "./node_modules/assert"
     ],
-    "http": [
-      "./node_modules/stream-http"
-    ],
     "https": [
       "./node_modules/https-browserify"
     ],
     "os": [
       "./node_modules/os-browserify"
+    ],
+    "http": [
+      "./node_modules/stream-http"
     ],
   }
 }
