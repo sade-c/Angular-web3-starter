@@ -148,7 +148,8 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular-builders/custom-webpack:dev-server",
+         
           "configurations": {
             "production": {
               "browserTarget": "Angweb3:build:production"
