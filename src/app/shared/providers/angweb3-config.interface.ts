@@ -1,4 +1,5 @@
 import { NetworkParams } from "./network-params.interface";
+import { SuperAddress } from "./SuperAddress.interface";
 
 export interface Angweb3Config {
     contracts: {
@@ -9,5 +10,6 @@ export interface Angweb3Config {
         Faucet: string;
         Greeter: string;
     },
-    networkParams: NetworkParams
+    networkParams: NetworkParams,
+    superToken: SuperAddress
 }

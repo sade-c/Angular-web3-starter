@@ -20,6 +20,7 @@ import { AppTopBarComponent } from './layout/app-topbar/app.topbar.component';
 import { ConfigService } from './layout/service/app.config.service';
 import { MenuService } from './layout/service/app.menu.service';
 import { NumbersService } from './numbers.service';
+import { SuperfluidService } from './providers/superfluid.service';
 
 
 @NgModule({
@@ -57,6 +58,6 @@ import { NumbersService } from './numbers.service';
         PrimengModule
     ],
     providers: [GlobalAlertService, MenuService,
-        ConfigService, NumbersService],
+        ConfigService, NumbersService, SuperfluidService],
 })
 export class SharedModule { }

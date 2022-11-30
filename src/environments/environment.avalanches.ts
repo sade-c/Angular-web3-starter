@@ -16,6 +16,7 @@ export const environment = {
     },
     networkParams: {
       chainId: '0xA869',
+      chainIdNumber: 43113,
       chainName: 'Avalanche Testnet C-Chain',
       nativeCurrency: {
         name: 'Avalanche',

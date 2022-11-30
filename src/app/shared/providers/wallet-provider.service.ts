@@ -27,7 +27,7 @@ export class WalletProviderService {
     accountSubject: BehaviorSubject<any> = new BehaviorSubject(null)
     networkSubject: BehaviorSubject<any> = new BehaviorSubject(null)
 
-    constructor(@Inject(WEB3) private _web3: Web3) {
+    constructor() {
         this.initializeNetworkConnection()
     }
     async connect(): Promise<boolean> {
@@ -228,12 +228,13 @@ export class WalletProviderService {
  * @param _abis Abis of contract
  * @param _address Address of contract
  */
-    async getContract(_abis: AbiItem[], _address: string): Promise<Contract | null> {
+    async getContract(_abis: any, _address: string): Promise<Contract | null> {
         if ((await this.provider.getCode(_address)) === '0x') {
             console.error(`Address ${_address} is not a contract at the connected chain`);
             return null;
         }
-        return new this._web3.eth.Contract(_abis, _address);
+       // return new this._web3.eth.Contract(_abis, _address);
+       return new Contract( _abis, _address,this.provider);
     }
     private getHexString(networkCode) {
         return `0x${(+networkCode).toString(16)}`
