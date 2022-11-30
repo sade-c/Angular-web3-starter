@@ -17,11 +17,12 @@ import { Observable } from 'rxjs';
     providedIn: 'root'
 })
 export class GreeterService extends BaseContract {
+    
     getContractABI(): AbiItem[] {
         return Greeter.abi as AbiItem[];
     }
 
-    greeterContract: any
+   
 
     constructor(public provider: DefaultProviderService, private wallet: WalletProviderService, private http: HttpClient, _messageService: GlobalAlertService) {
         super(_messageService, wallet, wallet.currentConfig.contracts.Greeter);
