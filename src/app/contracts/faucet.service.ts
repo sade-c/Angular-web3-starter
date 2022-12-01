@@ -7,7 +7,7 @@ import { environment } from '../../environments/environment';
 import { DefaultProviderService } from '../shared/providers/default-provider.service';
 import { WalletProviderService } from '../shared/providers/wallet-provider.service';
 import { AbiItem } from 'web3-utils';
-import { BaseContract } from './base-contract.service';
+import { BaseContract } from '../shared/providers/base-contract.service';
 import { GlobalAlertService } from '../shared/global-alert.service';
 import { Observable } from 'rxjs';
 import { CallbackFunction, TransactionResult } from '../shared/model';
