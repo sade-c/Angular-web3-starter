@@ -9,12 +9,12 @@ import { AbiItem } from 'web3-utils';
 import { Contract } from 'web3-eth-contract';
 
 import Web3 from 'web3';
-import { WEB3 } from './web3';
+ 
 @Injectable({
     providedIn: 'root'
 })
 export class WalletProviderService {
-
+    private _web3: Web3;
     provider: any;
     ethereum
     signer: Signer
@@ -27,7 +27,7 @@ export class WalletProviderService {
     accountSubject: BehaviorSubject<any> = new BehaviorSubject(null)
     networkSubject: BehaviorSubject<any> = new BehaviorSubject(null)
 
-    constructor(@Inject(WEB3) private _web3: Web3) {
+    constructor( ) {
         this.initializeNetworkConnection()
     }
     async connect(): Promise<boolean> {
@@ -58,6 +58,8 @@ export class WalletProviderService {
             ethereum.enable();
 
             this.setCurrentAccount(ethereum.selectedAddress)
+            this._web3 = new Web3(Web3.givenProvider);
+            console.log( "this._web3"  , this._web3);
 
         } else {
         }
