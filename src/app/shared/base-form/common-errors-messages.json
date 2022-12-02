@@ -1,0 +1,9 @@
+{
+  "required": "Field is required",
+  "minlength" : "Field must be at least {0} characters long",
+  "maxlength" : "Field must be at most {0} characters long",
+  "min" : "Field must be at least {0}",
+  "max" : "Field must be at most {0}",
+  "pattern" : "Field is invalid",
+  "email": "Field must be a valid email address",
+  "ethereumAccount": "Field must be a valid Ethereum account address"}

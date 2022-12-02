@@ -81,3 +81,16 @@ export class NumbersService {
     'nonillion',
   ];
 }
+
+/* 
+### NumberService
+
+Offers a set of methods to format/convert numbers:
+
+
+- `convertTimeJSToChain(timeInMillisJS: number)`: receives the time in milliseconds since since 1/1/1970 UTC and returns the time in seconds since 1/1/1970 UTC.
+- `convertTimeChainToJS(timeInSeconds: number)`: receives the time in seconds since since 1/1/1970 UTC and returns the time in milliseconds since 1/1/1970 UTC
+- `convertNumberToString(value: number)`: convert a number to locale string.
+- `formatBN(bn: BN, decimals: number)`: formats a BigNumber considering the number of decimals.
+- `formatBNShortScale(bn: BN, decimals: number)`: formats a BigNumber to a short scale format considering the number of decimals..
+ */
