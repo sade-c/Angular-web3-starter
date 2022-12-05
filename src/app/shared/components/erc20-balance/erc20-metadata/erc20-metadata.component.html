@@ -1,0 +1,23 @@
+ 
+
+<ng-template #table>
+  
+  <p-table [value]="metadata" [tableStyle]="{'min-width': '50rem'}">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>property</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Quantity</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-metadata>
+        <tr>
+            <td>{{metadata.property}}</td>
+            <td>{{metadata.value}}</td>
+          
+        </tr>
+    </ng-template>
+</p-table>
+
+</ng-template>

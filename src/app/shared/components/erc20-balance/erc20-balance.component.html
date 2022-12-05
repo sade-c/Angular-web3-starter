@@ -1,0 +1,20 @@
+<form [formGroup]="form" (ngSubmit)="getBalance($event)" class="container">
+
+  <h5>Invalid</h5>
+<div class="field">
+    <label for="accountAddress" class="block">Account Address</label>
+    <input id="accountAddress" type="accountAddress" aria-describedby="username2-help" class="ng-invalid ng-dirty"   
+     formControlName="accountAddress" pInputText />
+    <small id="accountAddress-help" class="p-error block">Inform the 42 characters long account address and ENTER.</small>
+</div>
+
+ 
+</form>
+
+ 
+
+<ng-template #balance>
+  <div class="balance"  >
+    {{ formatedBalance }} {{ symbol }}
+  </div>
+</ng-template>

@@ -1,0 +1,25 @@
+.container{
+  padding-top:5px
+}
+
+.input_40characters{
+  width: 45ch;
+}
+
+.value-container{
+  display: flex;
+  gap: 5px;
+  padding-top:25px;
+  padding-bottom: 15px;
+  align-items: center;
+  /* border: 1px solid black */
+}
+
+.value-label{
+  font-weight: 500;
+}
+
+.balance{
+  color: #3f51b5;
+  font-size: x-large;
+}

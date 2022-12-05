@@ -4,13 +4,16 @@ import { GreeterService } from 'src/app/contracts/greeter.service';
 import { GlobalAlertService } from 'src/app/shared/global-alert.service';
 import { TransactionResult } from 'src/app/shared/model';
 import { WalletProviderService } from 'src/app/shared/providers/wallet-provider.service';
-
+import { AbiItem } from 'web3-utils';
+import IERC20 from "../../../artifacts/ERC20.json"
 @Component({
   selector: 'app-greet',
   templateUrl: './greet.component.html',
   styleUrls: ['./greet.component.scss']
 })
 export class GreetComponent {
+  ERC20;
+  
   gform = new UntypedFormGroup({
     saysame: new UntypedFormControl(''),
 
@@ -19,8 +22,13 @@ export class GreetComponent {
   constructor(private wallet: WalletProviderService,
     private greeterService: GreeterService,
     private _messageService: GlobalAlertService
-  ) { }
+  ) { 
+    this.ERC20=this.getContractABI();
+  }
 
+  getContractABI(): AbiItem[] {
+    return IERC20.abi as AbiItem[];
+}
   async greetMe() {
     this.greet = await this.greeterService.greet();
     console.log(this.greet);
