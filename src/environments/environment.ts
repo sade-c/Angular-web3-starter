@@ -8,7 +8,7 @@ export const environment = {
   jsonRpcUrl: 'https://api.avax-test.network/ext/bc/C/rpc',
   config: {
     contracts: {
-      USDC: '',
+      USDC: '0xE01F8743677Da897F4e7De9073b57Bf034FC2433',
       mUSDC: '',
       WrappedNative: '',
       Faucet: '',

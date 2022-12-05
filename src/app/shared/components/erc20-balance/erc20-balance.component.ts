@@ -34,8 +34,7 @@ export class ERC20BalanceComponent extends BaseFormComponent implements OnInit {
 
 
   ngOnInit(): void {
-    //o minLength é para prevenir o "Short address/parameter Attack"
-    this.form = this._formBuilder.group({
+     this.form = this._formBuilder.group({
       accountAddress: [
         '',
         [
@@ -50,10 +49,10 @@ export class ERC20BalanceComponent extends BaseFormComponent implements OnInit {
   getBalance( ) {
     this.submitted = true;
  
-    if (this.form.valid) {
+  
       this.isLoading = true;
       this.showBalance = true;
-      console.log(this.form.value.accountAddress);
+   
       try {
         this.contractERC20
           .balanceOf((this.form.get('accountAddress') as FormControl).value)
@@ -66,20 +65,17 @@ export class ERC20BalanceComponent extends BaseFormComponent implements OnInit {
               return;
             }
             this.formatedBalance = this._numberService.formatBNShortScale(
-              result.result as BN  );
+              result.result as BN,
+              this.decimals  );
             this.formatedBalanceTooltip = this._numberService.formatBN(
-              result.result as BN   );
+              result.result as BN ,
+               this.decimals   );
             this.isLoading = false;
           });
       } catch (e: unknown) {
         this.isLoading = false;
         this._messageService.showToast((<Error>e).message);
       }
-    } else {
-      this.showBalance = false;
-      this._messageService.showToast(
-        `The data filled in the form is not valid. Please, fill the form correctly before submit it`
-      );
-    }
+     
   }
 }

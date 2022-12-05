@@ -1,11 +1,14 @@
-<form [formGroup]="form"   class="container">
 
-  <h5>Invalid</h5>
 <div class="col-12 md:col-12">
-    <label for="accountAddress"  >Account Address</label>
-    <input id="accountAddress" type="accountAddress" aria-describedby="username2-help"    
-     formControlName="accountAddress" pInputText />
-   
+
+ <form [formGroup]="form"   class="container">
+
+ 
+
+<div class="p-inputgroup">
+  <span class="p-inputgroup-addon">Account Address</span>
+  <input   formControlName="accountAddress" pInputText />
+
 </div>
 
 <div class="col-12 md:col-12">
@@ -16,9 +19,10 @@
 </form>
 
  
-
-<ng-template #balance>
+ 
   <div class="balance"  >
     {{ formatedBalance }} {{ symbol }}
   </div>
-</ng-template>
+ 
+    
+</div>
