@@ -5,7 +5,7 @@ import { ERC20BaseContract } from 'src/app/shared/providers/ERC20-base';
 import { IMetadata } from './metadata.interface';
 
 @Component({
-  selector: 'dapp-erc20-metadata',
+  selector: 'erc20-metadata',
   templateUrl: './erc20-metadata.component.html',
   styleUrls: ['./erc20-metadata.component.css'],
 })

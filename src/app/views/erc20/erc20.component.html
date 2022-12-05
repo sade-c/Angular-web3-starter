@@ -1,0 +1,33 @@
+
+
+ 
+
+<div class="col-12 md:col-12">
+    <div class="p-inputgroup">
+
+        <erc20-balance class="col-12 md:col-12"
+        [contractERC20]="erc20Service"
+        [symbol]="metadata['symbol']"
+        [decimals]="metadata['decimals']"
+        ></erc20-balance>  
+
+    </div>
+</div>
+<div class="col-12 md:col-12">
+    <div class="p-inputgroup">
+
+        <button pButton pRipple type="button" (click)="onApproveClicked()" label="Write"
+            class="p-button-secondary mr-2 mb-2"></button>
+
+    </div>
+</div>
+<div class="col-12 md:col-4">
+ 
+
+  <!--       <erc20-metadata
+        [contractERC20]="erc20Service"
+        (metadataRead)="onMetadataRead($event)"
+        ></erc20-metadata> -->
+
+     
+</div>

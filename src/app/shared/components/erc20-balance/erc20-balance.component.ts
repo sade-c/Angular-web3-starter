@@ -10,7 +10,7 @@ import { ethereumAddressValidator } from '../../validators/ethereumAddress.valid
  
 
 @Component({
-  selector: 'dapp-erc20-balance',
+  selector: 'erc20-balance',
   templateUrl: './erc20-balance.component.html',
   styleUrls: ['./erc20-balance.component.css'],
 })
@@ -47,9 +47,9 @@ export class ERC20BalanceComponent extends BaseFormComponent implements OnInit {
     });
   }
 
-  getBalance(event: Event) {
+  getBalance( ) {
     this.submitted = true;
-    event.preventDefault();
+ 
     if (this.form.valid) {
       this.isLoading = true;
       this.showBalance = true;

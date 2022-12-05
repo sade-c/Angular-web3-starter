@@ -21,6 +21,8 @@ export abstract class BaseContract {
     public address: string;
 
     constructor(protected _messageService: GlobalAlertService, protected _web3Service: WalletProviderService, _address: string) {
+        
+    console.log("addres for usdc 1",_address);
         this.address = _address;
         this._web3Service.getUserAccountAddressSubject().subscribe((_account) => {
             this._fromAccount = _account;
@@ -28,7 +30,7 @@ export abstract class BaseContract {
     }
 
     protected async getContract(_abis: AbiItem[]): Promise<Contract> {
-
+        console.log("addres for usdc 11",this.address);
         if (this.contract != null) {
             return this.contract;
         } else if (this._web3Service) {

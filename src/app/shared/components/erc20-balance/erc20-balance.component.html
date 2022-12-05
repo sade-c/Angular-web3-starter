@@ -1,14 +1,18 @@
-<form [formGroup]="form" (ngSubmit)="getBalance($event)" class="container">
+<form [formGroup]="form"   class="container">
 
   <h5>Invalid</h5>
-<div class="field">
-    <label for="accountAddress" class="block">Account Address</label>
-    <input id="accountAddress" type="accountAddress" aria-describedby="username2-help" class="ng-invalid ng-dirty"   
+<div class="col-12 md:col-12">
+    <label for="accountAddress"  >Account Address</label>
+    <input id="accountAddress" type="accountAddress" aria-describedby="username2-help"    
      formControlName="accountAddress" pInputText />
-    <small id="accountAddress-help" class="p-error block">Inform the 42 characters long account address and ENTER.</small>
+   
 </div>
 
- 
+<div class="col-12 md:col-12">
+  <button pButton pRipple type="button" (click)="getBalance()" label="Write"
+  class="p-button-secondary mr-2 mb-2"></button>
+</div>
+
 </form>
 
  

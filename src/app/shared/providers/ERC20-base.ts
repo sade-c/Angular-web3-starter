@@ -17,6 +17,8 @@ export abstract class ERC20BaseContract extends BaseContract {
     _web3Service: WalletProviderService,
     _address: string
   ) {
+
+    console.log("addres for usdc",_address);
     super(_loggingService, _web3Service, _address);
     // Quando instanciar um serviço para interagir com um ERC-20,
     // já faz uma chamada ao método  `symbol()` para buscar

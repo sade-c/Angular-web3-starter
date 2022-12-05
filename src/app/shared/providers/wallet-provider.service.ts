@@ -231,10 +231,10 @@ export class WalletProviderService {
  * @param _address Address of contract
  */
     async getContract(_abis: AbiItem[], _address: string): Promise<Contract | null> {
-        if ((await this.provider.getCode(_address)) === '0x') {
+     /*      if ((await this.provider.getCode(_address)) === '0x') {
             console.error(`Address ${_address} is not a contract at the connected chain`);
             return null;
-        }
+        }   */
         return new this._web3.eth.Contract(_abis, _address);
     }
     private getHexString(networkCode) {

@@ -29,6 +29,10 @@ const routes: Routes = [
     path: 'greet',
     loadChildren: () => import('../greeter/greeter.module').then(m => m.GreeterModule)
   },
+  {
+    path: 'erc20',
+    loadChildren: () => import('../erc20/erc20.module').then(m => m.Erc20Module)
+  },
 
 ];
 
