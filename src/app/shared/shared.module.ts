@@ -23,6 +23,11 @@ import { NumbersService } from './numbers.service';
 import { SuperfluidService } from './providers/superfluid.service';
 import { ERC20BalanceComponent } from './components/erc20-balance/erc20-balance.component';
 import { ERC20MetadataComponent } from './components/erc20-metadata/erc20-metadata.component';
+import { ERC20AllowanceComponent } from './components/erc20-allowance/erc20-allowance.component';
+import { ERC20ApprovalEventComponent } from './components/erc20-approval-event/erc20-approval-event.component';
+import { ERC20ApproveComponent } from './components/erc20-approve/erc20-approve.component';
+import { ERC20TransferFromComponent } from './components/erc20-transfer-from/erc20-transfer-from.component';
+import { ERC20TransferComponent } from './components/erc20-transfer/erc20-transfer.component';
 
 
 @NgModule({
@@ -38,7 +43,12 @@ import { ERC20MetadataComponent } from './components/erc20-metadata/erc20-metada
         AppMenuComponent,
         AppMenuitemComponent,
         ERC20BalanceComponent,
-        ERC20MetadataComponent
+        ERC20MetadataComponent,
+        ERC20AllowanceComponent,
+        ERC20ApprovalEventComponent,
+        ERC20ApproveComponent,
+        ERC20TransferComponent,
+        ERC20TransferFromComponent
 
     ],
     imports: [
@@ -53,6 +63,11 @@ import { ERC20MetadataComponent } from './components/erc20-metadata/erc20-metada
         AppMenuitemComponent,
         ERC20BalanceComponent,
         ERC20MetadataComponent,
+        ERC20AllowanceComponent,
+        ERC20ApprovalEventComponent,
+        ERC20ApproveComponent,
+        ERC20TransferComponent,
+        ERC20TransferFromComponent,
         ShortAddressPipe,
         EthFormattingPipe,
         BlockiePipe,

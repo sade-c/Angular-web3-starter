@@ -1,29 +1,30 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import BN from 'bn.js';
-import { AbiItem } from 'web3-utils';
-import { BaseFormComponent } from '../../helpers/base-form.component';
+ 
+  
 import { GlobalAlertService } from '../../global-alert.service';
+import { BaseFormComponent } from '../../helpers/base-form.component';
 import { NumbersService } from '../../numbers.service';
 import { ERC20BaseContract } from '../../providers/ERC20-base';
 import { ethereumAddressValidator } from '../../validators/ethereumAddress.validator';
  
 
 @Component({
-  selector: 'erc20-balance',
-  templateUrl: './erc20-balance.component.html',
-  styleUrls: ['./erc20-balance.component.css'],
+  selector: 'erc20-allowance',
+  templateUrl: './erc20-allowance.component.html',
+  styleUrls: ['./erc20-allowance.component.css'],
 })
-
-export class ERC20BalanceComponent extends BaseFormComponent implements OnInit {
+export class ERC20AllowanceComponent extends BaseFormComponent implements OnInit
+{
   @Input() contractERC20!: ERC20BaseContract;
   @Input() symbol: string = '';
   @Input() decimals: number = 1;
 
   isLoading = false;
-  showBalance = false;
-  formatedBalance: string = '0';
-  formatedBalanceTooltip: string = '0';
+  showAllowance = false;
+  formatedAllowance: string = '0';
+  formatedAllowanceTooltip: string = '0';
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -36,7 +37,15 @@ export class ERC20BalanceComponent extends BaseFormComponent implements OnInit {
   ngOnInit(): void {
     //o minLength é para prevenir o "Short address/parameter Attack"
     this.form = this._formBuilder.group({
-      accountAddress: [
+      ownerAddress: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(42),
+          ethereumAddressValidator,
+        ],
+      ],
+      spenderAddress: [
         '',
         [
           Validators.required,
@@ -47,28 +56,30 @@ export class ERC20BalanceComponent extends BaseFormComponent implements OnInit {
     });
   }
 
-  getBalance( ) {
-    this.submitted = true;
-   
+  getAllowance() {
+    this.submitted = true; 
     if (this.form.valid) {
       this.isLoading = true;
-      this.showBalance = true;
+      this.showAllowance = true;
       try {
         this.contractERC20
-          .balanceOf((this.form.get('accountAddress') as FormControl).value)
+          .allowance(
+            (this.form.get('ownerAddress') as FormControl).value,
+            (this.form.get('spenderAddress') as FormControl).value
+          )
           .subscribe((result) => {
             if (result.success == false) {
               this._messageService.showToast(
-                `It was not possible to get ${this.form.controls['accountAddress'].value} ${this.symbol} balance`
+                `It was not possible to get the ${this.symbol} allowance from ${this.form.controls['ownerAddress'].value} to  ${this.form.controls['spenderAddress'].value}`
               );
-              this.showBalance = false;
+              this.showAllowance = false;
               return;
             }
-            this.formatedBalance = this._numberService.formatBNShortScale(
+            this.formatedAllowance = this._numberService.formatBNShortScale(
               result.result as BN,
               this.decimals
             );
-            this.formatedBalanceTooltip = this._numberService.formatBN(
+            this.formatedAllowanceTooltip = this._numberService.formatBN(
               result.result as BN,
               this.decimals
             );
@@ -79,7 +90,7 @@ export class ERC20BalanceComponent extends BaseFormComponent implements OnInit {
         this._messageService.showToast((<Error>e).message);
       }
     } else {
-      this.showBalance = false;
+      this.showAllowance = false;
       this._messageService.showToast(
         `The data filled in the form is not valid. Please, fill the form correctly before submit it`
       );

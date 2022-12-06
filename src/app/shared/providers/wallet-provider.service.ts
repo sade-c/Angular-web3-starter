@@ -245,6 +245,11 @@ export class WalletProviderService {
         return environment.config.networkParams.nativeCurrency.symbol
     }
 
-
+  /**
+   * @returns Lastest block in the current connected chain
+   */
+   getCurrentBlockNumber(): Promise<number> {
+    return this._web3.eth.getBlockNumber();
+  }
     onboard() { }
 }

@@ -1,0 +1,55 @@
+<form [formGroup]="form" class="container">
+  <div class="card p-fluid">
+    <h5>approve</h5>
+
+    <div class="field">
+      <label htmlFor="spenderAddress">Spender Address</label>
+      <input pInputText id="spenderAddress" type="text" placeholder="Spender's address" formControlName="spenderAddress"
+        maxlength="42" minlength="40" />
+      <small *ngIf="getErrorMessage('spenderAddress')">{{ getErrorMessage("spenderAddress") }} </small>
+    </div>
+
+    <div class="field">
+      <label htmlFor="value">Value</label>
+      <input pInputText id="value" type="text" formControlName="value" min="1" type="number" />
+      <small *ngIf="getErrorMessage('value')">{{
+        getErrorMessage("value")}} </small>
+    </div>
+
+    <div class="field">
+      <label htmlFor="ownerAddress">Owner Address</label>
+      <input pInputText id="ownerAddress" formControlName="ownerAddress" maxlength="42" minlength="40" type="text" />
+      <small *ngIf="getErrorMessage('ownerAddress')">{{ getErrorMessage("ownerAddress") }} </small>
+      <!--     Inform the 42 characters long owner's account address -->
+    </div>
+
+
+  </div>
+  <div class="field">
+
+
+
+    <button pButton pRipple label="Submit" icon="pi pi-bookmark" (close)="approve()"></button>
+
+  </div>
+
+
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+<div>
+  <h2>Latest Approval Events</h2>
+  <erc20-approval-event [contractERC20]="contractERC20" ngClass="events-container">
+  </erc20-approval-event>
+</div>
