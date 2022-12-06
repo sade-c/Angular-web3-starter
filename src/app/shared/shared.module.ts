@@ -22,7 +22,7 @@ import { MenuService } from './layout/service/app.menu.service';
 import { NumbersService } from './numbers.service';
 import { SuperfluidService } from './providers/superfluid.service';
 import { ERC20BalanceComponent } from './components/erc20-balance/erc20-balance.component';
-import { ERC20MetadataComponent } from './components/erc20-balance/erc20-metadata/erc20-metadata.component';
+import { ERC20MetadataComponent } from './components/erc20-metadata/erc20-metadata.component';
 
 
 @NgModule({

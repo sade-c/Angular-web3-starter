@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Erc20Service } from 'src/app/contracts/erc20.service';
-import { IMetadata } from 'src/app/shared/components/erc20-balance/erc20-metadata/metadata.interface';
+import { IMetadata } from 'src/app/shared/components/erc20-metadata/metadata.interface';
 import { WalletProviderService } from 'src/app/shared/providers/wallet-provider.service';
 
 @Component({
