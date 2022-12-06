@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import BN from 'bn.js';
 import { AbiItem } from 'web3-utils';
-import { BaseFormComponent } from '../../base-form/base-form.component';
+import { BaseFormComponent } from '../../helpers/base-form.component';
 import { GlobalAlertService } from '../../global-alert.service';
 import { NumbersService } from '../../numbers.service';
 import { ERC20BaseContract } from '../../providers/ERC20-base';
