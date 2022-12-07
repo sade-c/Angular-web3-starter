@@ -130,6 +130,7 @@ export abstract class BaseContract {
     async getWeb3EventSubscription(_monitorParameter: EventMonitoringParameters): Promise<Web3Subscription> {
         const _contract = await this.getContract(this.getContractABI());
         return _contract.events[_monitorParameter.eventName](_monitorParameter);
+    ;
     }
     /**
      * Gets a instance of Web3Event Subscription of an event  
@@ -152,7 +153,10 @@ export abstract class BaseContract {
 
     async getWeb3PastEventSubscription(_monitorParameter: EventPastParameters): Promise<EventData[]> {
         const _contract = await this.getContract(this.getContractABI());
-        return _contract.getPastEvents(_monitorParameter.eventName, _monitorParameter.web3jsParameters);
+        console.log("_contract",_contract);
+        const event= _contract.getPastEvents(_monitorParameter.eventName, _monitorParameter.web3jsParameters);
+        console.log("event",event);
+        return event;
     }
 
     /**

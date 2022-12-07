@@ -30,27 +30,9 @@ export class ERC20TransferEventComponent implements OnInit, OnDestroy {
   constructor(private _web3Service: WalletProviderService) {}
 
   jureba: any;
-
-  async ngOnInit(): Promise<void> {
-    // const web3 = new Web3(Web3.givenProvider);
-
-    // this.jureba = new web3.eth.Contract(
-    //   this.contractERC20.getContractABI(),
-    //   environment.KOVAN.LINK_TOKEN
-    // );
-    // this.jureba.events.Transfer().on('data', (ev: any) => {
-    //   console.log('toma evento', ev);
-    // });
-    // this.jureba
-    //   .getPastEvents('Transfer', {
-    //     fromBlock: (await web3.eth.getBlockNumber()) - 1000,
-    //     toBlock: 'latest',
-    //     filter: { from: '0x97b6183621504b18Ccb97D0422c33a5D3601b862' },
-    //   })
-    //   .then((events: EventData[]) => {
-    //     console.log(`toma past da jureba`, events);
-    //   });
-    /////////
+  async ngOnInit(): Promise<void> {}
+  async transferEvent(): Promise<void> {
+    
     this._web3Service
       .getUserAccountAddressSubject()
       .subscribe(async (accountAddress) => {
@@ -61,9 +43,9 @@ export class ERC20TransferEventComponent implements OnInit, OnDestroy {
         //Se a conta não for nula, cria uma nova subscrição filtrando por eventos `Transfer`
         // que tenha a conta `from` igual à conta conectada na Wallet
         if (accountAddress) {
-          // subscrição eventos últimos 10 blocos
+      
           this.fetchPastTransferEvents(accountAddress);
-          // subscrição eventos futuros
+        
           this.eventSubscription =
             await this.contractERC20.getWeb3EventSubscription({
               eventName: 'Transfer',
@@ -89,6 +71,7 @@ export class ERC20TransferEventComponent implements OnInit, OnDestroy {
           });
         }
       });
+      console.log("event list",this.eventList);
   }
 
   ngOnDestroy(): void {
@@ -104,7 +87,8 @@ export class ERC20TransferEventComponent implements OnInit, OnDestroy {
    */
   private async fetchPastTransferEvents(accountAddress: string): Promise<void> {
     const currentBlock = await this._web3Service.getCurrentBlockNumber();
-    // subscrição eventos passados
+    console.log("block number: " + currentBlock);
+   
     const pastEvents = await this.contractERC20.getWeb3PastEventSubscription({
       eventName: 'Transfer',
       web3jsParameters: {
