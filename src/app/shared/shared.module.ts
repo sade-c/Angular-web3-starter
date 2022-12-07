@@ -28,6 +28,7 @@ import { ERC20ApprovalEventComponent } from './components/erc20-approval-event/e
 import { ERC20ApproveComponent } from './components/erc20-approve/erc20-approve.component';
 import { ERC20TransferFromComponent } from './components/erc20-transfer-from/erc20-transfer-from.component';
 import { ERC20TransferComponent } from './components/erc20-transfer/erc20-transfer.component';
+import { ERC20TransferEventComponent } from './components/erc20-transfer-event/erc20-transfer-event.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { ERC20TransferComponent } from './components/erc20-transfer/erc20-transf
         ERC20ApprovalEventComponent,
         ERC20ApproveComponent,
         ERC20TransferComponent,
-        ERC20TransferFromComponent
+        ERC20TransferFromComponent,
+        ERC20TransferEventComponent
 
     ],
     imports: [
@@ -68,6 +70,7 @@ import { ERC20TransferComponent } from './components/erc20-transfer/erc20-transf
         ERC20ApproveComponent,
         ERC20TransferComponent,
         ERC20TransferFromComponent,
+        ERC20TransferEventComponent,
         ShortAddressPipe,
         EthFormattingPipe,
         BlockiePipe,

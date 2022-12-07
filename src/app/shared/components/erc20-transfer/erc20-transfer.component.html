@@ -1,57 +1,51 @@
+
+<form  [formGroup]="form"    class="container">
+  <div class="card p-fluid">
+  <h5>transfer</h5>
+ 
+  <div class="field">
+    <label htmlFor="toAddress">Recipient Address</label>
+    <input pInputText id="toAddress"
+    formControlName="toAddress"
+    maxlength="42"
+    minlength="40"
+     type="text" />
+     <small  *ngIf="getErrorMessage('toAddress')">{{  getErrorMessage("toAddress") }}  </small>
+     <!--     Inform the 42 characters long owner's account address -->
+  </div>
+  <div class="field">
+    <label htmlFor="value">value</label>
+    <input pInputText id="value" type="text" 
+    
+    formControlName="value"
+    min="1"
+    type="number"
+    />
+    <small  *ngIf="getErrorMessage('value')">{{  getErrorMessage("value") }}  </small>
+      
+  </div>
+  <div class="field">
+    
+  
+ 
+  <button pButton pRipple label="Submit" icon="pi pi-bookmark" (close)="transfer()"></button>
+     
+  </div>
+</div>
+
+
+
+ </form>
+
+
 <div class="container">
-  <form [formGroup]="form" (ngSubmit)="transfer($event)" class="form-container">
-    <mat-form-field class="input_40characters" appearance="outline">
-      <mat-label>Recipient Address</mat-label>
-      <input
-        type="text"
-        [disableControl]="isLoading"
-        matInput
-        placeholder="Recipient's address"
-        formControlName="toAddress"
-        maxlength="42"
-        minlength="40"
-      />
-      <mat-hint
-        >Inform the 42 characters long recipient's account address</mat-hint
-      >
-      <mat-error *ngIf="getErrorMessage('toAddress')">{{
-        getErrorMessage("toAddress")
-      }}</mat-error>
-    </mat-form-field>
-    <mat-form-field class="input_40characters" appearance="outline">
-      <mat-label>Value</mat-label>
-      <input
-        type="text"
-        [disableControl]="isLoading"
-        matInput
-        placeholder="Tranfer value"
-        formControlName="value"
-        min="1"
-        type="number"
-      />
-      <mat-hint>Inform the transfer value in WEI units</mat-hint>
-      <mat-error *ngIf="getErrorMessage('value')">{{
-        getErrorMessage("value")
-      }}</mat-error>
-    </mat-form-field>
-    <button
-      class="input_40characters"
-      [disabled]="isLoading"
-      [class.spinner]="isLoading"
-      mat-raised-button
-      color="primary"
-      type="submit"
-    >
-      Submit
-    </button>
-  </form>
-  <mat-divider></mat-divider>
+ 
   <div>
     <h2>Latest Transfer Events</h2>
-    <dapp-erc20-transfer-event
+    <erc20-transfer-event
       [contractERC20]="contractERC20"
       ngClass="events-container"
     >
-    </dapp-erc20-transfer-event>
+    </erc20-transfer-event>
   </div>
 </div>
