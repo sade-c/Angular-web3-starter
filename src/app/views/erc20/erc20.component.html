@@ -1,33 +1,84 @@
 
 
  
+<div class="grid">
+    <div class="col-12 md:col-12">
+		<div class="card">
+            <button pButton pRipple type="button" (click)="onApproveClicked()" label="Write"
+            class="p-button-secondary mr-2 mb-2"></button>
+        </div>
+    </div>
 
-<div class="col-12 md:col-12">
-    <div class="p-inputgroup">
+	<div class="col-12 md:col-12">
+        Presents the metadata of token
+		<div class="card">
+            <erc20-balance class="col-12 md:col-12"
+            [contractERC20]="erc20Service"
+            [symbol]="metadata['symbol']"
+            [decimals]="metadata['decimals']"
+            ></erc20-balance>  
+        </div>
+    </div>
+    <div class="col-12 md:col-12">
+        Request     balance of a specific address
+		<div class="card">
+            <erc20-metadata
+            [contractERC20]="erc20Service"
+            (metadataRead)="onMetadataRead($event)"
+            ></erc20-metadata> 
+        </div>
+    </div>
 
-        <erc20-balance class="col-12 md:col-12"
+    <div class="col-12 md:col-12">
+        Request the allowance that an owner address gave to another spender
+        address to spend {{ metadata["symbol"] }}
+        on its behalf
+		<div class="card">
+            <erc20-allowance
+            [contractERC20]="erc20Service"
+            [symbol]="metadata['symbol']"
+            [decimals]="metadata['decimals']"
+          ></erc20-allowance>
+        </div>
+    </div>
+
+    <div class="col-12 md:col-12">
+		<div class="card">
+            Tranfer an amount of {{ metadata["symbol"] }} from the current account
+      connected at the wallet to another account
+      <erc20-transfer
         [contractERC20]="erc20Service"
         [symbol]="metadata['symbol']"
         [decimals]="metadata['decimals']"
-        ></erc20-balance>  
+      ></erc20-transfer>
+        </div>
+    </div>
 
+    <div class="col-12 md:col-12">
+		<div class="card">
+            Tranfer an amount of {{ metadata["symbol"] }} an informed account to
+            another account. The account connect at the wallet must be the owner of
+            the contract in order to run successfully
+            <erc20-transfer-from
+              [contractERC20]="erc20Service"
+              [symbol]="metadata['symbol']"
+              [decimals]="metadata['decimals']"
+            ></erc20-transfer-from>
+        </div>
+    </div>
+
+    <div class="col-12 md:col-12">
+		<div class="card">
+            Execute a transaction which the current account connected at the wallet
+            (owner) allow a spender address to spend {{ metadata["symbol"] }} on its
+            behalf. If a previous transactions was sent before, the allowance to be
+            considered is the latest confirmed by the blockchain network
+            <erc20-approve
+              [contractERC20]="erc20Service"
+              [symbol]="metadata['symbol']"
+              [decimals]="metadata['decimals']"
+            ></erc20-approve>
+        </div>
     </div>
 </div>
-<div class="col-12 md:col-12">
-    <div class="p-inputgroup">
-
-        <button pButton pRipple type="button" (click)="onApproveClicked()" label="Write"
-            class="p-button-secondary mr-2 mb-2"></button>
-
-    </div>
-</div>
-<div class="col-12 md:col-4">
- 
-
-        <erc20-metadata
-        [contractERC20]="erc20Service"
-        (metadataRead)="onMetadataRead($event)"
-        ></erc20-metadata>  
-
-     
-</div>
+  

@@ -21,7 +21,11 @@ export class Erc20Component implements OnInit {
 
   ngOnInit(): void {
     // Subscribing for account address changes in the provider
- 
+    this._web3Service
+    .getUserAccountAddressSubject()
+    .subscribe(async (address) => {
+      this.userAccountAddress = address;
+    });
   }
   onApproveClicked(){
     this._web3Service

@@ -16,10 +16,13 @@
   <div class="field">
     <label htmlFor="value">value</label>
     <input pInputText id="value" type="text" 
+    placeholder="Tranfer value"
+
     
     formControlName="value"
     min="1"
     type="number"
+  
     />
     <small  *ngIf="getErrorMessage('value')">{{  getErrorMessage("value") }}  </small>
       
@@ -28,7 +31,7 @@
     
   
  
-  <button pButton pRipple label="Submit" icon="pi pi-bookmark" (close)="transfer()"></button>
+  <button pButton pRipple label="Submit" icon="pi pi-bookmark" (click)="transfer()"></button>
      
   </div>
 </div>

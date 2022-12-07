@@ -19,7 +19,7 @@
     
   
  
-  <button pButton pRipple label="Submit" icon="pi pi-bookmark" (close)="getBalance()"></button>
+  <button pButton pRipple label="Submit" icon="pi pi-bookmark" (click)="getBalance()"></button>
      
   </div>
 </div>
@@ -32,7 +32,7 @@
  
  
   <div class="balance"  >
-    {{ formatedBalance }} {{ symbol }}
+    {{ formatedBalanceTooltip }} {{ symbol }}
   </div>
  
     

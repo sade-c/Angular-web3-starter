@@ -7,6 +7,7 @@ import { GlobalAlertService } from '../../global-alert.service';
 import { NumbersService } from '../../numbers.service';
 import { ERC20BaseContract } from '../../providers/ERC20-base';
 import { ethereumAddressValidator } from '../../validators/ethereumAddress.validator';
+import { BigNumber, ethers } from 'ethers';
  
 
 @Component({
@@ -24,6 +25,7 @@ export class ERC20BalanceComponent extends BaseFormComponent implements OnInit {
   showBalance = false;
   formatedBalance: string = '0';
   formatedBalanceTooltip: string = '0';
+  vals:""
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -51,7 +53,7 @@ export class ERC20BalanceComponent extends BaseFormComponent implements OnInit {
     this.submitted = true;
    
     if (this.form.valid) {
-      this.isLoading = true;
+  
       this.showBalance = true;
       try {
         this.contractERC20
@@ -64,6 +66,7 @@ export class ERC20BalanceComponent extends BaseFormComponent implements OnInit {
               this.showBalance = false;
               return;
             }
+    
             this.formatedBalance = this._numberService.formatBNShortScale(
               result.result as BN,
               this.decimals

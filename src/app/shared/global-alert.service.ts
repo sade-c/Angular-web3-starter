@@ -71,7 +71,7 @@ export class GlobalAlertService {
   async showToast(message: string) {
     this.messageService.add({
       severity: 'info',
-      summary: 'An Error Occured',
+      summary: 'Info',
       detail: message,
     });
 

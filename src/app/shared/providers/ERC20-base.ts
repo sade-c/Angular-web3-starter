@@ -1,5 +1,6 @@
 import BN from 'bn.js';
 import { Observable, Subject, Subscription } from 'rxjs';
+import Web3 from 'web3';
 import { GlobalAlertService } from '../global-alert.service';
  import { CallbackFunction, TransactionResult } from '../model';
 import { BaseContract } from './base-contract.service';
@@ -112,9 +113,10 @@ export abstract class ERC20BaseContract extends BaseContract {
    */
   transfer(
     _to: string,
-    _value: BN,
+    _value: any,
     _callback?: CallbackFunction
-  ): Observable<TransactionResult<string>> {
+  ): Observable<TransactionResult<string>> { 
+
     const successSentMessage = `Transaction to tranfer ${_value.toString()} ${
       this._symbol
     }  to ${_to} was sent successfully`;
@@ -128,7 +130,9 @@ export abstract class ERC20BaseContract extends BaseContract {
       _callback,
       successConfirmationMessage,
       _to,
-      _value
+      Web3.utils.toWei(_value, 'ether')// to ether type 
+
+       
     );
   }
 

@@ -52,7 +52,8 @@ export class ERC20TransferComponent
     this.submitted = true; 
     if (this.form.valid) {
       this.isLoading = true;
-
+ 
+ 
       try {
         this.contractERC20
           .transfer(
