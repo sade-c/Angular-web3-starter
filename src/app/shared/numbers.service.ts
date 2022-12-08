@@ -7,6 +7,15 @@ import BN from 'bn.js';
 })
 export class NumbersService {
   constructor() { }
+ convertEtherToWei   (ether_value:number)  {
+    return (ether_value * 10 ** 18).toFixed(0);
+  }
+  
+    convertWeiToEther  (wei_value:number)  {
+    return wei_value / 10 ** 18;
+  }
+  
+  
 
   /**
    * Time in Ethereum are represented in 'seconds' since 1/1/1970. While in Javascript, it's in milliseconds
