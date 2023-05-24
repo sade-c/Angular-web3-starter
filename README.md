@@ -357,3 +357,6 @@ export class GreeterService {
     }
 }
 ````
+
+ng deploy --base-href=https://sade-c.github.io/Angular-web3-starter/
+https://github.com/sade-c/Angular-web3-starter
