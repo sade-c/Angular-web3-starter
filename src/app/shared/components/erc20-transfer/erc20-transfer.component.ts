@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import BN from 'bn.js';
+ 
 import { GlobalAlertService } from '../../global-alert.service';
 import { BaseFormComponent } from '../../helpers/base-form.component';
  
