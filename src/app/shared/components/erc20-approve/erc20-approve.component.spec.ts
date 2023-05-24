@@ -7,8 +7,8 @@ describe('ERC20ApproveComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ERC20ApproveComponent],
-    }).compileComponents();
+    imports: [ERC20ApproveComponent],
+}).compileComponents();
   });
 
   beforeEach(() => {

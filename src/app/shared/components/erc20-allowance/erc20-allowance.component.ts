@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import BN from 'bn.js';
  
   
@@ -8,12 +8,25 @@ import { BaseFormComponent } from '../../helpers/base-form.component';
 import { NumbersService } from '../../numbers.service';
 import { ERC20BaseContract } from '../../providers/ERC20-base';
 import { ethereumAddressValidator } from '../../validators/ethereumAddress.validator';
+import { RippleModule } from 'primeng/ripple';
+import { ButtonModule } from 'primeng/button';
+import { NgIf } from '@angular/common';
+import { InputTextModule } from 'primeng/inputtext';
  
 
 @Component({
-  selector: 'erc20-allowance',
-  templateUrl: './erc20-allowance.component.html',
-  styleUrls: ['./erc20-allowance.component.css'],
+    selector: 'erc20-allowance',
+    templateUrl: './erc20-allowance.component.html',
+    styleUrls: ['./erc20-allowance.component.css'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        InputTextModule,
+        NgIf,
+        ButtonModule,
+        RippleModule,
+    ],
 })
 export class ERC20AllowanceComponent extends BaseFormComponent implements OnInit
 {

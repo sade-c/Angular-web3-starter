@@ -7,8 +7,8 @@ describe('ERC20TransferComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ERC20TransferComponent],
-    }).compileComponents();
+    imports: [ERC20TransferComponent],
+}).compileComponents();
   });
 
   beforeEach(() => {

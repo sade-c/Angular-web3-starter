@@ -1,17 +1,30 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GlobalAlertService } from '../../global-alert.service';
 import { BaseFormComponent } from '../../helpers/base-form.component';
  
 import { TransactionResult } from '../../model';
 import { ERC20BaseContract } from '../../providers/ERC20-base';
 import { ethereumAddressValidator } from '../../validators/ethereumAddress.validator';
+import { RippleModule } from 'primeng/ripple';
+import { ButtonModule } from 'primeng/button';
+import { NgIf } from '@angular/common';
+import { InputTextModule } from 'primeng/inputtext';
  
 
 @Component({
-  selector: 'erc20-transfer-from',
-  templateUrl: './erc20-transfer-from.component.html',
-  styleUrls: ['./erc20-transfer-from.component.css'],
+    selector: 'erc20-transfer-from',
+    templateUrl: './erc20-transfer-from.component.html',
+    styleUrls: ['./erc20-transfer-from.component.css'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        InputTextModule,
+        NgIf,
+        ButtonModule,
+        RippleModule,
+    ],
 })
 export class ERC20TransferFromComponent
   extends BaseFormComponent

@@ -5,27 +5,39 @@ import { ConfigService } from '../service/app.config.service';
 import { AppConfig } from '../appconfig';
 import { Subscription } from 'rxjs';
 import { AppComponent } from 'src/app/app.component';
+import { ToastModule } from 'primeng/toast';
+import { AppConfigComponent } from '../app-config/app.config.component';
+import { AppFooterComponent } from '../app-footer/app.footer.component';
+import { RouterOutlet } from '@angular/router';
+import { AppMenuComponent } from '../app-menu/app.menu.component';
+import { AppTopBarComponent } from '../app-topbar/app.topbar.component';
+import { NgClass, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-main',
   templateUrl: './app.main.component.html',
   animations: [
     trigger('submenu', [
-      state(
-        'hidden',
-        style({
-          height: '0px',
-        }),
-      ),
-      state(
-        'visible',
-        style({
-          height: '*',
-        }),
-      ),
+      state('hidden', style({
+        height: '0px',
+      })),
+      state('visible', style({
+        height: '*',
+      })),
       transition('visible => hidden', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)')),
       transition('hidden => visible', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)')),
     ]),
+  ],
+  standalone: true,
+  imports: [
+    NgClass,
+    AppTopBarComponent,
+    AppMenuComponent,
+    RouterOutlet,
+    AppFooterComponent,
+    AppConfigComponent,
+    NgIf,
+    ToastModule,
   ],
 })
 export class AppMainComponent implements AfterViewInit, OnDestroy, OnInit {

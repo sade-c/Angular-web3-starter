@@ -7,12 +7,10 @@ import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
-  declarations: [
-    LoginComponent
-  ],
-  imports: [
-    CommonModule,
-    LoginRoutingModule, SharedModule
-  ]
+    imports: [
+        CommonModule,
+        LoginRoutingModule, SharedModule,
+        LoginComponent
+    ]
 })
 export class LoginModule { }

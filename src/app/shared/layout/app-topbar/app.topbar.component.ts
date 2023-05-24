@@ -6,11 +6,26 @@ import { SelectItem } from 'primeng/api';
 import { WalletProviderService } from 'src/app/shared/providers/wallet-provider.service';
 import { GlobalAlertService } from 'src/app/shared/global-alert.service';
 import { NetworkParams } from 'src/app/shared/providers/network-params.interface';
+import { ShortAddressPipe } from '../../pipes/short-address.pipe';
+import { ChipModule } from 'primeng/chip';
+import { AvatarModule } from 'primeng/avatar';
+import { NgClass } from '@angular/common';
+import { ButtonModule } from 'primeng/button';
+import { RouterLink } from '@angular/router';
 
 declare const blockies;
 @Component({
-  selector: 'app-topbar',
-  templateUrl: './app.topbar.component.html',
+    selector: 'app-topbar',
+    templateUrl: './app.topbar.component.html',
+    standalone: true,
+    imports: [
+        RouterLink,
+        ButtonModule,
+        NgClass,
+        AvatarModule,
+        ChipModule,
+        ShortAddressPipe,
+    ],
 })
 export class AppTopBarComponent implements OnInit, OnDestroy {
   items?: MenuItem[];

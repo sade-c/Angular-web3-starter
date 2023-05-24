@@ -7,12 +7,10 @@ import { AccessComponent } from './access/access.component';
 
 
 @NgModule({
-  declarations: [
-    AccessComponent
-  ],
-  imports: [
-    CommonModule,
-    AccessRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        AccessRoutingModule,
+        AccessComponent
+    ]
 })
 export class AccessModule { }

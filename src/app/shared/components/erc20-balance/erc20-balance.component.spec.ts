@@ -8,8 +8,8 @@ describe('ERC20BalanceComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ERC20BalanceComponent ]
-    })
+    imports: [ERC20BalanceComponent]
+})
     .compileComponents();
   });
 

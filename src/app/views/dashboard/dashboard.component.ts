@@ -5,8 +5,9 @@ import { AppConfig } from 'src/app/shared/layout/appconfig';
 import { ConfigService } from 'src/app/shared/layout/service/app.config.service';
 
 @Component({
-  templateUrl: './dashboard.component.html',
-  providers: []
+    templateUrl: './dashboard.component.html',
+    providers: [],
+    standalone: true
 })
 export class DashboardComponent implements OnInit {
   config!: AppConfig;

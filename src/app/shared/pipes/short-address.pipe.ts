@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'shortAddress'
+    name: 'shortAddress',
+    standalone: true
 })
 export class ShortAddressPipe implements PipeTransform {
   transform(value: string = "", args: any[]): string {

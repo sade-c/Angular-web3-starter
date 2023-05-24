@@ -32,7 +32,9 @@ import { ERC20TransferEventComponent } from './components/erc20-transfer-event/e
 
 
 @NgModule({
-    declarations: [
+    imports: [
+        ReactiveFormsModule,
+        PrimengModule,
         ShortAddressPipe,
         EthFormattingPipe,
         BlockiePipe,
@@ -51,11 +53,6 @@ import { ERC20TransferEventComponent } from './components/erc20-transfer-event/e
         ERC20TransferComponent,
         ERC20TransferFromComponent,
         ERC20TransferEventComponent
-
-    ],
-    imports: [
-        ReactiveFormsModule,
-        PrimengModule
     ],
     exports: [AppMainComponent,
         AppTopBarComponent,

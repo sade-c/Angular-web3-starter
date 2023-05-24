@@ -7,8 +7,8 @@ describe('ERC20AllowanceComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ERC20AllowanceComponent],
-    }).compileComponents();
+    imports: [ERC20AllowanceComponent],
+}).compileComponents();
   });
 
   beforeEach(() => {

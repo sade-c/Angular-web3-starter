@@ -6,12 +6,10 @@ import { ErrorComponent } from '../error/error.component';
 
 
 @NgModule({
-  declarations: [
-    ErrorComponent
-  ],
-  imports: [
-    CommonModule,
-    ErrorRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        ErrorRoutingModule,
+        ErrorComponent
+    ]
 })
 export class ErrorModule { }

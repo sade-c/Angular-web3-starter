@@ -7,11 +7,22 @@ import { ERC20BaseContract } from '../../providers/ERC20-base';
 import { WalletProviderService } from '../../providers/wallet-provider.service';
  
 import { ITransferEvent } from './transfer-event.interface';
+import { SharedModule } from 'primeng/api';
+import { TableModule } from 'primeng/table';
+import { RippleModule } from 'primeng/ripple';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
-  selector: 'erc20-transfer-event',
-  templateUrl: './erc20-transfer-event.component.html',
-  styleUrls: ['./erc20-transfer-event.component.css'],
+    selector: 'erc20-transfer-event',
+    templateUrl: './erc20-transfer-event.component.html',
+    styleUrls: ['./erc20-transfer-event.component.css'],
+    standalone: true,
+    imports: [
+        ButtonModule,
+        RippleModule,
+        TableModule,
+        SharedModule,
+    ],
 })
 export class ERC20TransferEventComponent implements OnInit, OnDestroy {
   @Input() contractERC20!: ERC20BaseContract;

@@ -6,11 +6,15 @@ import { ERC20BaseContract } from '../../providers/ERC20-base';
 import { WalletProviderService } from '../../providers/wallet-provider.service';
  
 import { IApprovalEvent } from './approval-event.interface';
+import { SharedModule } from 'primeng/api';
+import { TableModule } from 'primeng/table';
 
 @Component({
-  selector: 'erc20-approval-event',
-  templateUrl: './erc20-approval-event.component.html',
-  styleUrls: ['./erc20-approval-event.component.css'],
+    selector: 'erc20-approval-event',
+    templateUrl: './erc20-approval-event.component.html',
+    styleUrls: ['./erc20-approval-event.component.css'],
+    standalone: true,
+    imports: [TableModule, SharedModule],
 })
 export class ERC20ApprovalEventComponent implements OnInit, OnDestroy {
   @Input() contractERC20!: ERC20BaseContract;

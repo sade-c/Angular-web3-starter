@@ -8,8 +8,8 @@ describe('ERC20MetadataComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ERC20MetadataComponent ]
-    })
+    imports: [ERC20MetadataComponent]
+})
     .compileComponents();
   });
 

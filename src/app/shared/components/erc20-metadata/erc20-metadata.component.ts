@@ -3,11 +3,15 @@ import { TransactionResult } from 'src/app/shared/model';
 import { ERC20BaseContract } from 'src/app/shared/providers/ERC20-base';
  
 import { IMetadata } from './metadata.interface';
+import { SharedModule } from 'primeng/api';
+import { TableModule } from 'primeng/table';
 
 @Component({
-  selector: 'erc20-metadata',
-  templateUrl: './erc20-metadata.component.html',
-  styleUrls: ['./erc20-metadata.component.css'],
+    selector: 'erc20-metadata',
+    templateUrl: './erc20-metadata.component.html',
+    styleUrls: ['./erc20-metadata.component.css'],
+    standalone: true,
+    imports: [TableModule, SharedModule],
 })
 export class ERC20MetadataComponent implements OnInit {
   @Input() contractERC20!: ERC20BaseContract;

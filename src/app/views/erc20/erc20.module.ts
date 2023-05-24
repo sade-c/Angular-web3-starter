@@ -7,13 +7,11 @@ import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
-  declarations: [
-    Erc20Component
-  ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    Erc20RoutingModule
-  ]
+    imports: [
+        CommonModule,
+        SharedModule,
+        Erc20RoutingModule,
+        Erc20Component
+    ]
 })
 export class Erc20Module { }

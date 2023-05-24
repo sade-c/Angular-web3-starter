@@ -1,15 +1,20 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GreeterService } from 'src/app/contracts/greeter.service';
 import { GlobalAlertService } from 'src/app/shared/global-alert.service';
 import { TransactionResult } from 'src/app/shared/model';
 import { WalletProviderService } from 'src/app/shared/providers/wallet-provider.service';
 import { AbiItem } from 'web3-utils';
 import IERC20 from "../../../artifacts/ERC20.json"
+import { InputTextModule } from 'primeng/inputtext';
+import { RippleModule } from 'primeng/ripple';
+import { ButtonModule } from 'primeng/button';
 @Component({
-  selector: 'app-greet',
-  templateUrl: './greet.component.html',
-  styleUrls: ['./greet.component.scss']
+    selector: 'app-greet',
+    templateUrl: './greet.component.html',
+    styleUrls: ['./greet.component.scss'],
+    standalone: true,
+    imports: [ButtonModule, RippleModule, FormsModule, ReactiveFormsModule, InputTextModule]
 })
 export class GreetComponent {
   ERC20;

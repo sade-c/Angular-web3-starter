@@ -9,15 +9,13 @@ import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
-    declarations: [
-        GreetComponent
-    ],
     imports: [
         CommonModule,
         FormsModule,
         GreetRoutingModule,
         SharedModule,
-        SharedModule
+        SharedModule,
+        GreetComponent
     ]
 })
 export class GreeterModule { }

@@ -3,7 +3,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 declare const blockies
 
 @Pipe({
-    name: 'blockie'
+    name: 'blockie',
+    standalone: true
 })
 
 export class BlockiePipe implements PipeTransform {

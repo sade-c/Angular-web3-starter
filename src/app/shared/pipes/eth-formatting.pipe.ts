@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { BigNumber, ethers } from 'ethers';
 
 @Pipe({
-    name: 'formatEth'
+    name: 'formatEth',
+    standalone: true
 })
 
 export class EthFormattingPipe implements PipeTransform {

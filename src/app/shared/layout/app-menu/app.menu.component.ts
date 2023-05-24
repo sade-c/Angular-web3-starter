@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AppMainComponent } from '../app-main/app.main.component';
+import { AppMenuitemComponent } from './app.menuitem.component';
+import { NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-menu',
-  template: `
+    selector: 'app-menu',
+    template: `
     <div class="layout-menu-container">
       <ul class="layout-menu" role="menu" (keydown)="onKeydown($event)">
         <!--
@@ -18,6 +20,8 @@ import { AppMainComponent } from '../app-main/app.main.component';
       </ul>
     </div>
   `,
+    standalone: true,
+    imports: [NgFor, AppMenuitemComponent],
 })
 export class AppMenuComponent implements OnInit {
   model!: any[];

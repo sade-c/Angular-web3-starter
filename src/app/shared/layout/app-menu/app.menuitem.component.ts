@@ -1,16 +1,18 @@
-import { ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { ChangeDetectorRef, Component, Input, OnDestroy, OnInit, forwardRef } from '@angular/core';
+import { NavigationEnd, Router, RouterLinkActive, RouterLink } from '@angular/router';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { MenuService } from '../service/app.menu.service';
 import { AppMainComponent } from '../app-main/app.main.component';
+import { RippleModule } from 'primeng/ripple';
+import { NgIf, NgClass, NgFor } from '@angular/common';
 
 @Component({
-  /* tslint:disable:component-selector */
-  selector: '[app-menuitem]',
-  /* tslint:enable:component-selector */
-  template: `
+    /* tslint:disable:component-selector */
+    selector: '[app-menuitem]',
+    /* tslint:enable:component-selector */
+    template: `
     <ng-container>
       <a
         [attr.href]="item.url"
@@ -53,34 +55,35 @@ import { AppMainComponent } from '../app-main/app.main.component';
       </ul>
     </ng-container>
   `,
-  host: {
-    '[class.active-menuitem]': 'active',
-  },
-  animations: [
-    trigger('children', [
-      state(
-        'void',
-        style({
-          height: '0px',
-        }),
-      ),
-      state(
-        'hiddenAnimated',
-        style({
-          height: '0px',
-        }),
-      ),
-      state(
-        'visibleAnimated',
-        style({
-          height: '*',
-        }),
-      ),
-      transition('visibleAnimated => hiddenAnimated', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)')),
-      transition('hiddenAnimated => visibleAnimated', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)')),
-      transition('void => visibleAnimated, visibleAnimated => void', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)')),
-    ]),
-  ],
+    host: {
+        '[class.active-menuitem]': 'active',
+    },
+    animations: [
+        trigger('children', [
+            state('void', style({
+                height: '0px',
+            })),
+            state('hiddenAnimated', style({
+                height: '0px',
+            })),
+            state('visibleAnimated', style({
+                height: '*',
+            })),
+            transition('visibleAnimated => hiddenAnimated', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)')),
+            transition('hiddenAnimated => visibleAnimated', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)')),
+            transition('void => visibleAnimated, visibleAnimated => void', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)')),
+        ]),
+    ],
+    standalone: true,
+    imports: [
+        NgIf,
+        RippleModule,
+        NgClass,
+        RouterLinkActive,
+        RouterLink,
+        NgFor,
+        forwardRef(() => AppMenuitemComponent),
+    ],
 })
 export class AppMenuitemComponent implements OnInit, OnDestroy {
   @Input() item: any;
