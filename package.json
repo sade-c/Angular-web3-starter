@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "server": "ng server",
-    "build": "ng build",
+    "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "build.polygon": "ng build --configuration polygon",
     "build.avalanche": "ng build --configuration avalanche",
