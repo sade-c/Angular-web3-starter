@@ -6,13 +6,13 @@ import { environment } from 'src/environments/environment';
     providedIn: 'root'
 })
 export class DefaultProviderService {
-
+ 
     provider: ethers.providers.JsonRpcProvider
 
     constructor() {
         this.provider = new ethers.providers.JsonRpcProvider(environment.jsonRpcUrl);
     }
-
+  
     async getBlockNumber() {
         const blockNumber = await this.provider.getBlockNumber();
         console.log('block number is: ', blockNumber);
@@ -29,6 +29,7 @@ export class DefaultProviderService {
         const balance = await this.provider.getBalance(address);
         console.log(' balance is: ', balance);
     }
+ 
 
 
 }

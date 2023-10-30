@@ -33,9 +33,8 @@ export class ERC20ApprovalEventComponent implements OnInit, OnDestroy {
   constructor(private _web3Service: WalletProviderService) {}
 
   async ngOnInit(): Promise<void> {
-    this._web3Service
-      .getUserAccountAddressSubject()
-      .subscribe(async (accountAddress) => {
+    let  accountAddress= this._web3Service.getUserAccountAddressSubject() ;
+      (async (accountAddress) => {
         //se existe uma subscrição, encerra-a
         if (this.eventSubscription) {
           this.eventSubscription.unsubscribe();

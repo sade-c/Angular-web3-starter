@@ -1,7 +1,7 @@
-import { Inject, Injectable } from '@angular/core';
+import { Inject, Injectable, signal } from '@angular/core';
 import { BigNumber, ethers, providers, Signer, } from 'ethers'
 import detectEthereumProvider from '@metamask/detect-provider';
-import { BehaviorSubject } from 'rxjs';
+
 import { environment } from 'src/environments/environment';
 import { NetworkParams } from './network-params.interface';
 import { Angweb3Config } from './angweb3-config.interface';
@@ -23,9 +23,11 @@ export class WalletProviderService {
     currentNetwork: NetworkParams
     currentConfig: Angweb3Config;
 
-    connectedSubject: BehaviorSubject<boolean> = new BehaviorSubject(false);
-    accountSubject: BehaviorSubject<any> = new BehaviorSubject(null)
-    networkSubject: BehaviorSubject<any> = new BehaviorSubject(null)
+    connected=signal<boolean>(false);
+    account=signal<string | undefined >(null);
+    accountAddres=signal<string | undefined >(null);
+    network=signal(null);
+  
 
     constructor( ) {
         this.initializeNetworkConnection()
@@ -130,14 +132,15 @@ export class WalletProviderService {
         console.log('signer is now ', this.signer)
         return accounts
     }
-    getUserAccountAddressSubject() {
-        return this.accountSubject.asObservable();
-    }
+ 
     getaccountSubject() {
-        return this.accountSubject.asObservable();
+        return this.account()
     }
     getnetworkSubject() {
-        return this.networkSubject.asObservable();
+        return this.network();
+    }
+    getUserAccountAddressSubject() {
+        return this.account();
     }
     async disconnect() {
         // not the right call
@@ -185,7 +188,8 @@ export class WalletProviderService {
 
     private handledChainChanged(network) {
         console.log('>>> Chain changed to: ', network)
-        this.networkSubject.next(this.getHexString(network.chainId))
+        this.network.set(this.getHexString(network.chainId))
+
     }
 
     private handleAccountChanged(accounts) {
@@ -199,7 +203,7 @@ export class WalletProviderService {
 
     private setCurrentAccount(account: string | null) {
         this.currentAccount = account
-        this.accountSubject.next(account)
+        this.account.set(account)
     }
 
     private initializeNetworkConnection() {

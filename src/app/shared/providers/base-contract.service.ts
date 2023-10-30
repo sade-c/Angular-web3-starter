@@ -24,9 +24,9 @@ export abstract class BaseContract {
         
     console.log("addres for usdc 1",_address);
         this.address = _address;
-        this._web3Service.getUserAccountAddressSubject().subscribe((_account) => {
-            this._fromAccount = _account;
-        });
+        let fromAccount= this._web3Service.getUserAccountAddressSubject();
+        this._fromAccount=fromAccount;
+        
     }
 
     protected async getContract(_abis: AbiItem[]): Promise<Contract> {
@@ -68,14 +68,16 @@ export abstract class BaseContract {
     /**
      * @returns returns TRUE if the wallet address is equal to the contract owner
      */
-    isOwner(): Observable<boolean> {
-        return new Observable<boolean>((_subscriber) => {
-            this.owner().subscribe((_ownerAddress) => {
-                this._web3Service.getUserAccountAddressSubject().subscribe((_userAddress) => {
-                    _subscriber.next(_ownerAddress === _userAddress);
-                });
-            });
-        });
+    isOwner()  {
+        
+                let fromAccount= this._web3Service.getUserAccountAddressSubject();
+                let _ownerAddress= this._owner;
+                if(_ownerAddress === fromAccount){
+                    return true
+                }
+                else{   return false}
+           
+        ;
     }
 
     /**
@@ -208,6 +210,8 @@ export abstract class BaseContract {
      * @param _args Contract`s function arguments
      * @returns Observable<TransactionResult<T>>
      */
+ 
+ 
     protected callBN(_abi: AbiItem[], _functionName: string, ..._args: any): Observable<TransactionResult<BN>> {
         return this.callPrivate(
             _abi,
@@ -241,7 +245,8 @@ export abstract class BaseContract {
         return new Observable<TransactionResult<string>>((subscriber) => {
             this.getContract(_abi as AbiItem[]).then((_contract) => {
                 let result;
-                this._web3Service.getUserAccountAddressSubject().subscribe(async (fromAccount) => {
+                let fromAccount= this._web3Service.getUserAccountAddressSubject();
+             (async (fromAccount) => {
                     try {
                         result = await _contract.methods[_functionName](..._args)
                             .send({
@@ -287,6 +292,8 @@ export abstract class BaseContract {
      * @param _abi Contract's ABI
      * @param _propertyName name of the property of type string
      */
+      
+    
     protected getString(_abi: AbiItem[], _propertyName: string): Promise<string> {
         return this.getProperty(_abi, _propertyName);
     }
@@ -374,7 +381,9 @@ export abstract class BaseContract {
         return new Observable<TransactionResult<T>>((subscriber) => {
             this.getContract(_abi as AbiItem[]).then((_contract) => {
                 let result;
-                this._web3Service.getUserAccountAddressSubject().subscribe(async (fromAccount) => {
+                let fromAccount= this._web3Service.getUserAccountAddressSubject();
+                
+                 (async () => {
                     try {
                         result = await _contract.methods[_functionName](..._args).call({
                             from: fromAccount,

@@ -1,6 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, signal } from '@angular/core';
 import { AppMainComponent } from '../app-main/app.main.component';
-import { Subscription } from 'rxjs';
+ 
 import { MenuItem } from 'primeng/api';
 import { SelectItem } from 'primeng/api';
 import { WalletProviderService } from 'src/app/shared/providers/wallet-provider.service';
@@ -27,13 +27,12 @@ declare const blockies;
         ShortAddressPipe,
     ],
 })
-export class AppTopBarComponent implements OnInit, OnDestroy {
+export class AppTopBarComponent implements OnInit    {
   items?: MenuItem[];
   network: SelectItem[];
   imageDataUrl = '';
-  private accountSubscription?: Subscription;
-  private networkSubscription?: Subscription;
-  private balanceSubscription?: Subscription;
+  networkChanid=signal<string>(null);
+ 
   public account: any;
   connect: string = "Connect Wallet";
   isConected = false;
@@ -72,11 +71,7 @@ export class AppTopBarComponent implements OnInit, OnDestroy {
       }
     } else { this.connect = "Connect Wallet"; }
   }
-  ngOnDestroy(): void {
-    this.accountSubscription?.unsubscribe();
-    this.networkSubscription?.unsubscribe();
-    this.balanceSubscription?.unsubscribe();
-  }
+ 
   async onConnectTapped() {
 
     this.isConected = await this.provider.connect()
@@ -93,12 +88,13 @@ export class AppTopBarComponent implements OnInit, OnDestroy {
   }
 
   async setupListeners() {
+    this.networkChanid=this.provider.network();
 
-    this.networkSubscription = this.provider.networkSubject.subscribe(chainId => {
-      if (chainId) {
+   
+      if ( this.networkChanid) {
 
-        this.isCorrectNetwork = chainId.toString(16).toLowerCase() == this.provider.currentNetwork.chainId.toLocaleLowerCase()
-        console.log(`Networks: ${chainId} <=> ${this.provider.currentNetwork.chainId}`);
+      //  this.isCorrectNetwork =  this.networkChanid.toString(16).toLowerCase() == this.provider.currentNetwork.chainId.toLocaleLowerCase()
+        console.log(`Networks: ${ this.networkChanid} <=> ${this.provider.currentNetwork.chainId}`);
         console.log(`isCorrectNetwork: ${this.isCorrectNetwork}`);
         console.log(`isConnected: ${this.provider.isConnected()}`);
         console.log(`currentAccount: ${this.provider.currentAccount}`);
@@ -107,7 +103,7 @@ export class AppTopBarComponent implements OnInit, OnDestroy {
         console.log(`MaskNetwork: ${this.provider.currentNetwork.chainId}`);
         this.selectedNetwork = this.currentNetwork.chainId;
       }
-    })
+  
 
   }
   async switchNetwork() {

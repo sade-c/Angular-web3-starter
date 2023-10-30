@@ -43,10 +43,8 @@ export class ERC20TransferEventComponent implements OnInit, OnDestroy {
   jureba: any;
   async ngOnInit(): Promise<void> {}
   async transferEvent(): Promise<void> {
-    
-    this._web3Service
-      .getUserAccountAddressSubject()
-      .subscribe(async (accountAddress) => {
+   let  accountAddress= this._web3Service.getUserAccountAddressSubject() ;
+      (async (accountAddress) => {
         //se existe uma subscrição, encerra-a
         if (this.eventSubscription) {
           this.eventSubscription.unsubscribe();

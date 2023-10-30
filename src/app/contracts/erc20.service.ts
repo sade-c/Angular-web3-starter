@@ -11,8 +11,7 @@ import { BaseContract } from '../shared/providers/base-contract.service';
 import { GlobalAlertService } from '../shared/global-alert.service';
 import { AbiItem } from 'web3-utils';
 import { CallbackFunction, TransactionResult } from '../shared/model';
-import { Observable } from 'rxjs';
-import { ERC20BaseContract } from '../shared/providers/ERC20-base';
+ import { ERC20BaseContract } from '../shared/providers/ERC20-base';
 import { ABI } from '../artifacts/erc20';
 
 @Injectable({
