@@ -3,14 +3,11 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Angweb3": {
+    "blicence": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
-        },
-        "@schematics/angular:application": {
-          "strict": true
+          "standalone": true
         }
       },
       "root": "",
@@ -20,24 +17,21 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "docs",
+            "outputPath": "dist/blicence",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
-            ],
-            "scripts": [
-              "src/assets/js/blockies.min.js"
+              "src/styles.scss",
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css"
             ],
             "allowedCommonJsDependencies": [
-              "chart.js",
               "hash.js",
               "web3",
               "scrypt-js",
@@ -46,19 +40,20 @@
               "aes-js",
               "js-sha3",
               "bech32"
-            ]
+            ],
+            "scripts": [ "src/assets/js/blockies.min.js"]
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "3mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "2500kb",
+                  "maximumError": "6mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
+                  "maximumWarning": "4kb",
                   "maximumError": "10kb"
                 }
               ],
@@ -66,69 +61,6 @@
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
-                }
-              ],
-              "outputHashing": "all"
-            },
-            "polygon": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "3mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ],
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.polygon.ts"
-                }
-              ],
-              "outputHashing": "all"
-            },
-            "avalanche": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "3mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ],
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.avalanche.ts"
-                }
-              ],
-              "outputHashing": "all"
-            },
-            "hardhat": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "3mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ],
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.hardhat.ts"
                 }
               ],
               "outputHashing": "all"
@@ -148,19 +80,12 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Angweb3:build:production"
-            },
-            "polygon": {
-              "browserTarget": "Angweb3:build:polygon"
-            },
-            "avalanche": {
-              "browserTarget": "Angweb3:build:avalanche"
-            },
-            "hardhat": {
-              "browserTarget": "Angweb3:build:hardhat"
+              "browserTarget": "blicence:build:production"
             },
             "development": {
-              "browserTarget": "Angweb3:build:development"
+              "browserTarget": "blicence:build:development"
+            }, "local": {
+              "browserTarget": "blicence:build:local"
             }
           },
           "defaultConfiguration": "development"
@@ -168,7 +93,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Angweb3:build"
+            "browserTarget": "blicence:build"
           }
         },
         "test": {
@@ -178,25 +103,17 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
               "src/styles.scss"
             ],
             "scripts": [
               "src/assets/js/blockies.min.js"
-            ]
-          }
-        },
-        "lint": {
-          "builder": "@angular-eslint/builder:lint",
-          "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
             ]
           }
         }
@@ -204,9 +121,6 @@
     }
   },
   "cli": {
-    "analytics": false,
-    "schematicCollections": [
-      "@angular-eslint/schematics"
-    ]
+    "analytics": "13d446c0-7f2a-4e09-8bc8-881781cfb18f"
   }
 }

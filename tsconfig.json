@@ -3,7 +3,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
+    "outDir": "./dist/",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck":true,
@@ -37,25 +37,5 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  },
-  "paths": {
-    "crypto": [
-      "./node_modules/crypto-browserify"
-    ],
-    "stream": [
-      "./node_modules/stream-browserify"
-    ],
-    "assert": [
-      "./node_modules/assert"
-    ],
-    "https": [
-      "./node_modules/https-browserify"
-    ],
-    "os": [
-      "./node_modules/os-browserify"
-    ],
-    "http": [
-      "./node_modules/stream-http"
-    ],
   }
 }
