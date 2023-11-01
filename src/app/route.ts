@@ -18,6 +18,12 @@ export const routes: Routes = [
   }
   ,
 
+  {
+    path: 'greet',
+    
+    loadComponent: () => import('./pages/greet/greet.component').then(m => m.GreetComponent)
+  }
+  ,
   {path: '**', component: NotfoundComponent},
 ]
 

@@ -9,12 +9,16 @@ import { RippleModule } from 'primeng/ripple';
 import { ButtonModule } from 'primeng/button';
 import { GlobalAlertService } from 'src/app/web3/global-alert.service';
 import { WalletProviderService } from 'src/app/web3/providers/wallet-provider.service';
+import { AppMainComponent } from 'src/app/layouts/app-main/app.main.component';
+import { MenuService } from 'src/app/layouts/service/app.menu.service';
+import { ConfigService } from 'src/app/layouts/service/app.config.service';
 @Component({
     selector: 'app-greet',
     templateUrl: './greet.component.html',
     styleUrls: ['./greet.component.scss'],
+    providers: [ConfigService,MenuService],
     standalone: true,
-    imports: [ButtonModule, RippleModule, FormsModule, ReactiveFormsModule, InputTextModule]
+    imports: [ButtonModule, RippleModule, FormsModule, ReactiveFormsModule, InputTextModule,AppMainComponent]
 })
 export class GreetComponent {
   ERC20;
