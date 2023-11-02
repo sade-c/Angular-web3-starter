@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, OnDestroy, Renderer2, OnInit } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, Renderer2, OnInit ,inject} from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
 import { ConfigService } from '../service/app.config.service';
@@ -59,7 +59,9 @@ export class AppMainComponent implements AfterViewInit, OnDestroy, OnInit {
   config!: AppConfig;
   subscription!: Subscription;
 
-  constructor(public renderer: Renderer2, public app: AppComponent, public configService: ConfigService) { }
+    configService=inject(ConfigService)
+    
+  constructor(public renderer: Renderer2, public app: AppComponent, ) { }
 
   ngOnInit() {
     this.config = this.configService.config;
