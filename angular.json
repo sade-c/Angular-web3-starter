@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "blicence": {
+    "ang": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/blicence",
+            "outputPath": "dist/ang",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -80,12 +80,12 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "blicence:build:production"
+              "browserTarget": "ang:build:production"
             },
             "development": {
-              "browserTarget": "blicence:build:development"
+              "browserTarget": "ang:build:development"
             }, "local": {
-              "browserTarget": "blicence:build:local"
+              "browserTarget": "ang:build:local"
             }
           },
           "defaultConfiguration": "development"
@@ -93,7 +93,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "blicence:build"
+            "browserTarget": "ang:build"
           }
         },
         "test": {
